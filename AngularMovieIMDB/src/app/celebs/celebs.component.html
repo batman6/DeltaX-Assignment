@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><img src='../favicon.ico' style="width: 100px; height: 45px;"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="movies"> Movies </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tvshows"> TV Shows </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="celebs"> Celebs </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="add"> Add </a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Sex</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Bio</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let actor of actors">
+    <tr >
+      <td style="width: 200px;">{{actor.name}}</td>
+      <td style="width: 100px;">{{actor.sex}}</td>
+      <td style="width: 200px;" *ngFor="let format of formatsDateTest">{{actor.dob | date: format}}</td>
+      <td style="width: 700px;">{{actor.bio}}</td>
+    </tr>
+  </tbody>
+</table>
