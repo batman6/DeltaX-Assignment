@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RestApiService } from '../rest-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add',
@@ -11,27 +11,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddComponent implements OnInit {
 
-  @Input() movieDetails = { name: String, year: Number, plot: String, cast: [], poster: String };
-
   actors: any;
   years = [];
-  options = [];
 
-  config = {
-    displayKey: 'name',
-    search: true, // true/false for the search functionlity defaults to false,
-    height: 'auto',
-    placeholder: 'Select', // text to be displayed when no item is selected defaults to Select,
-    customComparator: () => {},
-    limitTo: this.options.length, // a number thats limits the no of options displayed in the UI similar to angular's limitTo pipe
-    moreText: 'more', // text to be displayed whenmore than one items are selected like Option 1 + 5 more
-    noResultsFound: 'No results found!', // text to be displayed when no items are found while searching
-    searchPlaceholder: 'Search', // label thats displayed in search input,
-    searchOnKey: 'name',
-  };
+  // tslint:disable-next-line: max-line-length
+  movieDetails: { name: string, year: 0, plot: string, cast: any, poster: string, type: string } = { name: '', year: 0, plot: '', cast: [], poster: '', type: '' };
+  actorDetails: { name: string, dob: string, bio: string, sex: string } = { name: '', dob: '', bio: '', sex: ''};
 
-  dataModel = [];
-  dropdownOptions = [];
   // tslint:disable-next-line: max-line-length
   constructor(private http: HttpClient, public rest: RestApiService, private route: ActivatedRoute, private router: Router) { }
 
@@ -40,13 +26,14 @@ export class AddComponent implements OnInit {
       'Content-Type': 'application/json'
     })
   };
-
   ngOnInit() {
     for (let y = 1900; y <= 2019; y++) {
       this.years.push(y);
     }
     this.getActors();
+
   }
+
 
   getActors(): void {
     this.http.get('http://localhost:8080/api/movie/getAllActors')
@@ -65,5 +52,14 @@ export class AddComponent implements OnInit {
       console.log(err);
     });
     document.getElementById('confirmation').innerHTML = 'Movie Added';
+  }
+
+  submitActor() {
+    this.rest.addActors(this.actorDetails).subscribe((result) => {
+      console.log('Added Successfully');
+    }, (err) => {
+      console.log(err);
+    });
+    document.getElementById('confirmationActor').innerHTML = 'Actor Added';
   }
 }

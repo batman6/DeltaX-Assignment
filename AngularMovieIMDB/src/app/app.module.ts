@@ -11,6 +11,7 @@ import { CelebsComponent } from './celebs/celebs.component';
 import { AddComponent } from './add/add.component';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 
+
 @NgModule({
   declarations: [
     AppComponent,

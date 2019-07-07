@@ -5,7 +5,10 @@ exports.createMovie = (req, res) => {
     const movie = new Movie({
         name:  req.body.name, 
         year: req.body.year,
-        bio: req.body.bio
+        plot: req.body.plot,
+        cast: req.body.cast.name,
+        poster: req.body.poster,
+        type: req.body.type
     });
     movie.save()
     .then(data => {
@@ -72,9 +75,5 @@ exports.findOne = (req, res)=> {
 };
 
 exports.update = (req, res) => {
-
-};
-
-exports.delete = (req, res) => {
 
 };
