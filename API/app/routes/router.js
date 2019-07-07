@@ -11,5 +11,5 @@ module.exports = (app) => {
     
     app.get('/api/movie/getAllActors',movie.findActors);
 
-    app.get('/api/movie',movie.findOne);
+    app.put('/api/movie/:id',movie.update);
 }

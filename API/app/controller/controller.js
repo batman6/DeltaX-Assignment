@@ -70,10 +70,31 @@ exports.findActors = (req, res) => {
     });
 };
 
-exports.findOne = (req, res)=> {
-
-};
-
 exports.update = (req, res) => {
-
+    if(!req.body.plot || !req.body.year || !req.body.poster || !req.body.type) {
+        return res.status(400).send({
+            message: "Movie plot/year/poster/type can not be empty"
+        });
+    }
+    Movie.findByIdAndUpdate(req.params._id, {
+        name: req.body.name || "Untitled Movie",
+        plot: req.body.plot
+    }, {new: true})
+    .then(movie => {
+        if(!movie) {
+            return res.status(404).send({
+                message: "Movie not found with id " + req.params.id
+            });
+        }
+        res.send(movie);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Movie not found with id " + req.params.id
+            });                
+        }
+        return res.status(500).send({
+            message: "Error updating movie with id " + req.params.id
+        });
+    });
 };

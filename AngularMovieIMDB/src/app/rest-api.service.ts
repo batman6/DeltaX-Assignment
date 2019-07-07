@@ -26,7 +26,7 @@ export class RestApiService {
   addMovies(movie): Observable<any> {
     console.log(movie);
     return this.http.post<any>(endpoint + 'create', JSON.stringify(movie), httpOptions).pipe(
-// tslint:disable-next-line: no-shadowed-variable
+      // tslint:disable-next-line: no-shadowed-variable
       tap((movie) => console.log(`Added movie w/ id=${movie.id}`)),
       catchError(this.handleError<any>('addMovies'))
     );
@@ -35,26 +35,19 @@ export class RestApiService {
   addActors(actors): Observable<any> {
     console.log(actors);
     return this.http.post<any>(endpoint + 'create/actor', JSON.stringify(actors), httpOptions).pipe(
-// tslint:disable-next-line: no-shadowed-variable
+      // tslint:disable-next-line: no-shadowed-variable
       tap((actors) => console.log(`Added actor w/ id=${actors.id}`)),
       catchError(this.handleError<any>('addActors'))
     );
   }
 
-  /* updatepost(id, post): Observable<any> {
-    return this.http.put(endpoint + 'posts/' + id, JSON.stringify(post), httpOptions).pipe(
-      tap(_ => console.log(`updated post id=${id}`)),
-      catchError(this.handleError<any>('updatepost'))
+  updateMovie(id, movie): Observable<any> {
+    return this.http.put(endpoint + 'movie/' + id, JSON.stringify(movie), httpOptions).pipe(
+      tap(_ => console.log(`updated movie id=${id}`)),
+      catchError(this.handleError<any>('Update Movie'))
     );
   }
 
-  deletepost(id): Observable<any> {
-    return this.http.delete<any>(endpoint + 'posts/' + id, httpOptions).pipe(
-      tap(_ => console.log(`deleted post id=${id}`)),
-      catchError(this.handleError<any>('deletepost'))
-    );
-  }
- */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

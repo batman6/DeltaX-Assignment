@@ -41,8 +41,65 @@
       <td style="width: 300px;">{{movies.cast}}</td>
       <td>
         <span class="table-edit"><button type="button"
-            class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></span>
+            class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#modal">Edit</button></span>
       </td>
     </tr>
   </tbody>
 </table>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form>
+        <div class="form-group ml-2 mr-2">
+          <label for="name-label">Name</label>
+          <input type="text" [(ngModel)]="movieDetails.name" #name="ngModel" name="name" class="form-control"
+            id="name-input" placeholder="Movie Name">
+          <small id="HelpBlock" class="form-text text-muted">
+            Enter the name of the Movie/TV Shows.
+          </small>
+        </div>
+        <div class="form-group ml-2 mr-2">
+          <label for="yearFormControlSelect">Year</label>
+          <select class="form-control col-md-2" id="yearFormControlSelect" [(ngModel)]="movieDetails.year" name="year">
+            <option *ngFor="let year of years">{{year}}</option>
+          </select>
+        </div>
+        <div class="form-group ml-2 mr-2">
+          <label for="plotFormControlTextarea">Plot</label>
+          <textarea class="form-control" [(ngModel)]="movieDetails.plot" name="plot" id="plotFormControlTextarea" rows="5"
+            placeholder="Plot of the Movie"></textarea>
+        </div>
+        <div class="form-group ml-2 mr-2">
+          <label for="name-label">Poster</label>
+          <input type="text" [(ngModel)]="movieDetails.poster" #name="ngModel" name="poster" class="form-control"
+            id="poster-input" placeholder="Poster's URL">
+          <small id="HelpBlock" class="form-text text-muted">
+            Please paste the URL for the poster here.
+          </small>
+        </div>
+        <div class="form-check form-check-inline ml-2">
+            <input class="form-check-input" type="radio" [(ngModel)]="movieDetails.type" name="type" id="inlineRadio1"
+              value="Movie">
+            <label class="form-check-label" for="inlineRadio1">Movie</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" [(ngModel)]="movieDetails.type" name="type" id="inlineRadio2"
+              value="Show">
+            <label class="form-check-label" for="inlineRadio2">Show</label>
+          </div>
+       </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="update()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
