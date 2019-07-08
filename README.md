@@ -11,7 +11,7 @@ node server.js
 ng serve
 ```
 
-Screen Shots:
+## Screen Shots:
 ![](/ScreenShots/Screenshot%202019-07-07%20at%2011.13.21%20PM.png)
 ![](/ScreenShots/Screenshot%202019-07-07%20at%2011.13.28%20PM.png)
 ![](/ScreenShots/Screenshot%202019-07-07%20at%2011.13.34%20PM.png)
