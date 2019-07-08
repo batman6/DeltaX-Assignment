@@ -1,6 +1,6 @@
 # DeltaX-Assignment
-Assignment for Fresher
-##Steps:
+Assignment for Fresher.
+## Steps:
 # Import all the data into the mongoDB Compass.
 # Run the API:
 ```bash
