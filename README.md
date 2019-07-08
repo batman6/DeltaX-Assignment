@@ -1,9 +1,15 @@
 # DeltaX-Assignment
 Assignment for Fresher
-Steps:
->> Import all the data into the mongoDB Compass.
->> Run the API: node server.js
->> Run the Angular App: ng serve
+##Steps:
+# Import all the data into the mongoDB Compass.
+# Run the API:
+```bash
+node server.js
+```
+# Run the Angular App: 
+```bash
+ng serve
+```
 
 Screen Shots:
 ![](/ScreenShots/Screenshot%202019-07-07%20at%2011.13.21%20PM.png)
